@@ -142,7 +142,7 @@
                                 @foreach($footer as $footer)
                                 <div>
                                     <a class="footer-link float-left text-decoration-none text-white text-capitalize"
-                                        href="">{{ $footer->name }}</a>
+                                        href="{{ route('category', $footer->slug) }}">{{ $footer->name }}</a>
                                 </div>
                                 @endforeach
                             </div>

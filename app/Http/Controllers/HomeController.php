@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -34,6 +35,13 @@ class HomeController extends Controller
     }
     public function adminView()
     {
-        return view('adminview');
+        $count_bill = Bill::count();
+        $sum_bill = Bill::sum('total');
+        $sum_ship = Bill::where('received', 0)->count();
+        return view('adminview', [
+            'count_bill' => $count_bill,
+            'sum_bill' => $sum_bill,
+            'sum_ship' => $sum_ship,
+        ]);
     }
 }
