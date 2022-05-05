@@ -7,9 +7,9 @@
                                 class="text-decoration-none text-white">Trang Chủ</a> >>
                             <a href="{{ route('category', $category_slug->slug) }}"
                                 class="text-decoration-none text-white">{{ $category_slug->name }}</a> >>
-                            <a href="{{ route('category_detail', $category_slug->slug) }}"
+                            <a href="{{ route('category_detail', $category_detail_slug->slug) }}"
                                 class="text-decoration-none text-white">{{ $category_detail_slug->name }}</a> >>
-                            <span href="{{ route('product', $category_slug->slug) }}"
+                            <span href="{{ route('product', $product->slug) }}"
                                 class="text-decoration-none text-white">{{ $product->name }}</span>
                 </div>
             </div>
@@ -17,10 +17,18 @@
                 <div class="product-top pt-4 px-4">
                     <h4 class="text-white product-title">{{ $product->name }} ({{ $product->partNumber }})
                     </h4>
-                    <div class="d-flex ">
-                        <div class="product-img">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="">
+                    <div class="d-flex">
+                        <div class="slideshow-container">
+                            <!-- Full-width images with number and caption text -->
+                            @foreach($product_slider as $product_slider)
+                            <div class="mySlides fade">
+                                <img src="{{ asset('storage/' . $product_slider->image) }}" alt="" style="width:100%">
+                            </div>
+                            @endforeach
+                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
                         </div>
+                        
                         <div class="product-detail-info text-white">
                             <div class="product-detail-des">
                                 <h6>Thông số sản phẩm</h6>
@@ -35,6 +43,7 @@
                                 <div class="d-flex mt-3 mb-3">
                                     <div class="product-detail-price-new">{{ number_format($product->price_new) }}đ</div>
                                     <div class="product-detail-price-old">{{ number_format($product->price_old) }}đ</div>
+                                    <div class="product-price-sale">Giảm {{number_format(100 - ($product->price_new / $product->price_old * 100))}}%</div>
                                 </div>
                                 <div class="d-flex mb-3">
                                     <div class="product-detail-box">Giá đã có VAT</div>
@@ -84,13 +93,7 @@
                                         <div class="text-white"><?php echo $product['description']; ?></div>
                                     </div>
                                 </div>
-                                <div class="product-des-bottom px-4 py-3 me-3 mt-4">
-                                    <h4 class="product-des-title text-white">Video</h4>
-                                    <iframe width="1047" height="589" src="https://www.youtube.com/embed/Q0PufcK9JXg"
-                                        title="YouTube video player" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                </div>
+                                
                             </div>
 
 

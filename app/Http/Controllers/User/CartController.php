@@ -83,5 +83,4 @@ class CartController extends Controller
             'footer' => $category,
         ]);
     }
-    
 }

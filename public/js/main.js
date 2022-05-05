@@ -37,6 +37,7 @@ $(document).ready(function () {
             // instead of a settings object
         ]
     });
+
 });
 window.onload = function () {
     var popup = document.getElementById('popup');
@@ -53,3 +54,72 @@ window.onload = function () {
         }
     };
 };
+
+const headerNavbar = document.querySelector(".header_navbar");
+const headerSearch = document.querySelector(".search_bar");
+const searchIcon = document.querySelector(".search");
+const searchClose = document.querySelector(".search-close");
+searchIcon.addEventListener("click", function () {
+    headerNavbar.classList.remove("active");
+    headerNavbar.classList.add("hide");
+    headerSearch.classList.remove("hide");
+    headerSearch.classList.add("active");
+});
+searchClose.addEventListener("click", function () {
+    headerNavbar.classList.remove("hide");
+    headerNavbar.classList.add("active");
+    headerSearch.classList.remove("active");
+    headerSearch.classList.add("hide");
+});
+$(".search_bar-result").hide();
+$(".search-input").keyup(function () {
+    let _text = $(this).val();
+    if (_text != '') {
+        $.ajax({
+            url: "http://127.0.0.1:8000/search?key=" + _text,
+            type: 'GET',
+            success: function (res) {
+                let _html = '';
+                for (var pro of res) {
+                    _html += '<a href="" class="search_bar-item">';
+                    _html += '<div class="search_bar-img">';
+                    _html += '<img src="http://127.0.0.1:8000/storage/' + pro.image + '" alt="" width="100%">';
+                    _html += '</div>';
+                    _html += '<div class="search_bar-content">';
+                    _html += '<h5 class="search_bar-heading">' + pro.name + '</h5>';
+                    _html += '</div>';
+                    _html += '</a >';
+                }
+                $(".search_bar-result").show();
+                $(".search_bar-result").html(_html);
+            }
+        });
+    } else {
+        $(".search_bar-result").html('');
+        $(".search_bar-result").hide();
+    }
+});
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+}

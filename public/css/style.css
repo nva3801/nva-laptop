@@ -8,6 +8,141 @@
   color: white !important;
 }
 
+.active {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.search {
+  color: white;
+  font-size: 20px;
+  padding-top: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.search_bar {
+  position: relative;
+  z-index: 9999999;
+  display: none;
+}
+
+.search_bar input {
+  position: relative;
+  background-color: #212121;
+  color: #c4c4c4;
+  height: 52px;
+  padding: 0 15px 0 50px;
+  border: 0;
+  font-size: 16px;
+  line-height: 52px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10.4%;
+  color: white;
+  font-size: 19px !important;
+  padding-top: 16px !important;
+  cursor: pointer;
+  color: #c4c4c4 !important;
+
+}
+
+.search_bar i {
+  color: white;
+  font-size: 24px;
+  padding-top: 15px;
+  cursor: pointer;
+}
+
+.search_bar-result {
+  position: absolute;
+  background-color: #3e3e3e;
+  width: 86.7%;
+  left: 9.5%;
+  top: 60px;
+  /* display: none; */
+}
+
+.search_bar-item {
+  display: flex;
+  color: white;
+  text-decoration: none;
+}
+
+.search_bar-item:hover {
+  color: #ee4d2d;
+}
+
+.search_bar-img {
+  width: 150px;
+}
+
+.search_bar-content {
+  padding-top: 50px;
+}
+
+.slideshow-container {
+  max-width: 500px;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.fade:not(.show) {
+  opacity: 1;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  text-decoration: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ee4d2d;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
 .slider_list {
   display: flex;
   justify-content: center;
@@ -353,6 +488,20 @@ footer {
 
 .news_title:hover {
   color: orangered;
+}
+
+.product-price-sale {
+  background-color: #ee4d2d;
+  position: absolute;
+  top: 17%;
+  right: 40%;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.product-des-top p img {
+  width: 100%;
 }
 
 /* PC and Tablet */
@@ -1086,6 +1235,7 @@ footer {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 0 10px;
+  position: relative;
 }
 
 .product-detail-price-new {

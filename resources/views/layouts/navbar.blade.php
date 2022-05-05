@@ -28,6 +28,12 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('admin.slider.index') }}">
+            <i class="fa-solid fa-bars"></i>
+            <span>Quản Lý Slide</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('admin.category.index') }}">
             <i class="fa-solid fa-bars"></i>
             <span>Quản Lý Danh Mục</span>
@@ -44,6 +50,12 @@
         <a class="nav-link collapsed" href="{{ route('admin.product.index') }}"></i>
             <i class="fa-solid fa-laptop"></i>
             <span>Quản Lý Sản Phẩm</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('admin.productslider.index') }}"></i>
+            <i class="fa-solid fa-laptop"></i>
+            <span>Quản Lý Slide Sản Phẩm</span>
         </a>
     </li>
     <li class="nav-item">

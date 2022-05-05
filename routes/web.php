@@ -11,6 +11,7 @@ use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\BillController;
 use App\Http\Controllers\User\NewsController;
+use App\Http\Controllers\User\SearchController;
 
 //BE
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
@@ -21,6 +22,9 @@ use App\Http\Controllers\Admin\FAQController as AdminFAQController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\BillController as AdminBillController;
+use App\Http\Controllers\Admin\ProductSliderController as AdminProductSliderController;
+use App\Http\Controllers\Admin\SliderController as AdminSliderController;
+
 
 
 /*
@@ -54,6 +58,8 @@ Route::get('don-hang/{id}', [BillController::class, 'cartshow'])->name('cartshow
 Route::get('received/{id}', [BillController::class, 'received'])->name('received');
 Route::get('tin-tuc', [NewsController::class, 'news_list']);
 Route::get('tin-tuc/{id}', [NewsController::class, 'news'])->name('news');
+Route::get('search', [SearchController::class, 'search'])->name('search');
+
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::prefix('admin')->name('admin.')->group(function () {
@@ -64,7 +70,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::resource('admin', AdminAdminController::class);
         Route::resource('faq', AdminFAQController::class);
         Route::resource('product', AdminProductController::class);
+        Route::resource('productslider', AdminProductSliderController::class);
         Route::resource('news', AdminNewsController::class);
+        Route::resource('slider', AdminSliderController::class);
         Route::get('bill', [AdminBillController::class, 'index'])->name('bill');
         Route::get('bill-detail/{id}', [AdminBillController::class, 'show'])->name('billdetail');
     });

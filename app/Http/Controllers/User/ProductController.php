@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\CategoryDetail;
 use App\Models\Product;
+use App\Models\ProductSlider;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -17,6 +18,7 @@ class ProductController extends Controller
         $product = Product::where('slug', $slug)->first();
         $category_detail_slug = CategoryDetail::where('id', $product->category_id)->first();
         $category_slug = Category::where('id', $category_detail_slug->category_id)->first();
+        $product_slider = ProductSlider::where('product_id', $product->id)->get();
         return view('user.product', [
             'category' => $category,
             'product' => $product,
@@ -24,6 +26,7 @@ class ProductController extends Controller
             'category_detail_slug' => $category_detail_slug,
             'category_slug' => $category_slug,
             'footer' => $category,
+            'product_slider' => $product_slider,
         ]);
     }
 }

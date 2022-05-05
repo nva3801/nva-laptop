@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
 
 class CheckoutController extends Controller
 {
@@ -50,6 +52,7 @@ class CheckoutController extends Controller
                     $bill->save();
                 }
             }
+
             session()->pull('cart');
             return view('user.checkout', [
                 'category' => $category,

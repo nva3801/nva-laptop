@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -20,98 +20,118 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-color">
                 <div class="container-1650">
-                    <div class="d-flex">
-                        <a class="navbar-brand" href="{{ '/' }}"><img
-                                src="{{ asset('img/logo.acad5b52.png.webp') }}" width="140px" height="30px"
-                                alt=""></a>
-                        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon text-white"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item position-relative">
-                                    <a class="nav-link text-white dropdown-toggle fw-bold" aria-current="page"
-                                        href="category.html">SẢN
-                                        PHẨM</a>
-                                    <div class="dropdown">
-                                        <ul class="dropdown-list">
-                                            @foreach ($category as $category)
-                                                <li class="dropdown-items">
-                                                    <a class="text-center text-decoration-none" href="{{ route('category',$category->slug) }}">
-                                                        <img width="140px"
-                                                            src="{{ asset('storage/' . $category->image) }}" alt="">
-                                                        <p class="fw-bold text-uppercase text-white">
-                                                            {{ $category->name }}
-                                                        </p>
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item position-relative">
-                                    <a class="nav-link text-white dropdown-toggle fw-bold" href="#">KHÁM PHÁ</a>
-                                    <div class="dropdown">
-                                        <ul>
-                                            <li class="dropdown-bottom-item">
-                                                <a class="text-capitalize text-decoration-none" href="{{ url('tin-tuc') }}">Tin tức</a>
-                                            </li>
-                                            <li class="dropdown-bottom-item">
-                                                <a class="text-capitalize text-decoration-none" href="">sự kiện</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item position-relative">
-                                    <a class="nav-link text-white dropdown-toggle fw-bold" href="#">DỊCH VỤ</a>
-                                    <div class="dropdown">
-                                        <ul>
-                                            <li class="dropdown-bottom-item">
-                                                <a class="text-capitalize text-decoration-none" href="">Thông Tin
-                                                    Bảo hành</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="d-flex">
-                                @if (Route::has('login'))
-                                    @auth
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
-                                            role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                            <a href="{{ url('don-hang') }}" class="dropdown-item">Đơn Hàng</a>
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();                                                                                                                                                                                                                                                                                                                                                          document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                class="d-none">
-                                                @csrf
-                                            </form>
-                                            <form action="{{ url('cartshow') }}" method="POST">
-                                                <input type="hidden" class="form-control mb-2" name="id"
-                                                    value="{{ Auth::user()->id }}">
-                                            </form>
+                    <div class="header_navbar">
+                        <div class="d-flex">
+                            <a class="navbar-brand" href="{{ '/' }}"><img
+                                    src="{{ asset('img/logo.acad5b52.png.webp') }}" width="140px" height="30px"
+                                    alt=""></a>
+                            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon text-white"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item position-relative">
+                                        <a class="nav-link text-white dropdown-toggle fw-bold" aria-current="page"
+                                            href="category.html">SẢN
+                                            PHẨM</a>
+                                        <div class="dropdown">
+                                            <ul class="dropdown-list">
+                                                @foreach ($category as $category)
+                                                    <li class="dropdown-items">
+                                                        <a class="text-center text-decoration-none" href="{{ route('category',$category->slug) }}">
+                                                            <img width="140px"
+                                                                src="{{ asset('storage/' . $category->image) }}" alt="">
+                                                            <p class="fw-bold text-uppercase text-white">
+                                                                {{ $category->name }}
+                                                            </p>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </div>
-                                    @else
-                                        <a href="{{ route('login') }}"
+                                    </li>
+                                    <li class="nav-item position-relative">
+                                        <a class="nav-link text-white dropdown-toggle fw-bold" href="#">KHÁM PHÁ</a>
+                                        <div class="dropdown">
+                                            <ul>
+                                                <li class="dropdown-bottom-item">
+                                                    <a class="text-capitalize text-decoration-none" href="{{ url('tin-tuc') }}">Tin tức</a>
+                                                </li>
+                                                <li class="dropdown-bottom-item">
+                                                    <a class="text-capitalize text-decoration-none" href="">sự kiện</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item position-relative">
+                                        <a class="nav-link text-white dropdown-toggle fw-bold" href="#">DỊCH VỤ</a>
+                                        <div class="dropdown">
+                                            <ul>
+                                                <li class="dropdown-bottom-item">
+                                                    <a class="text-capitalize text-decoration-none" href="">Thông Tin
+                                                        Bảo hành</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                    <div class="d-flex">
+                                        @if (Route::has('login'))
+                                        @auth
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
+                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                <a href="{{ url('don-hang') }}" class="dropdown-item">Đơn Hàng</a>
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();                                                                                                                                                                                                                                                                                                                                                          document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                    class="d-none">
+                                                    @csrf
+                                                </form>
+                                                <form action="{{ url('cartshow') }}" method="POST">
+                                                    <input type="hidden" class="form-control mb-2" name="id"
+                                                        value="{{ Auth::user()->id }}">
+                                                    </form>
+                                                </div>
+                                                @else
+                                            <a href="{{ route('login') }}"
                                             class="text-sm text-gray-700 dark:text-gray-500 underline text-white navbar-icon"><i
-                                                class="fas fa-user"></i></a>
-
-                                    @endauth
-                                @endif
-                                <a class="text-white mx-3 navbar-icon" href="{{ url('gio-hang') }}">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    <span class="navbar-icon-noti">0</span>
-                                </a>
-
-                            </div>
+                                            class="fas fa-user"></i></a>
+                                            
+                                            @endauth
+                                            @endif
+                                            <div class="search mx-3">
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                            </div>
+                                            <a class="text-white navbar-icon" href="{{ url('gio-hang') }}">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                         </div>
                     </div>
+                    <form action="">
+                        <div class="search_bar">
+                        <div class=" d-flex w-100">   
+                            <a class="navbar-brand" href="{{ '/' }}"><img
+                                    src="{{ asset('img/logo.acad5b52.png.webp') }}" width="140px" height="30px"
+                                    alt=""></a>
+                            <input type="text" name="" class="search-input w-100" placeholder="Tìm Kiếm..." id="">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <i class="fa-solid fa-xmark mx-4 search-close"></i>
+                        </div>
+                        <div class="search_bar-result">
+                            
+                        </div>
+                    </div>
+                    </form>
+                    
+                    
             </nav>
         </header>
         <main>

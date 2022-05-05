@@ -2,18 +2,33 @@
 @section('content')
     <!-- Banner -->
     <div class="bg position-relative">
-        <img class="PC" width="100%" src="{{ asset('img/Define Your Vision｜GIGABYTE EVENT-1641354339.jpg') }}"
-            alt="">
-        <img class="Mobile" width="100%" src="{{ asset('img/Define Your Vision｜GIGABYTE EVENT-1641353354.jpg') }}"
-            alt="">
-        <div class="bg-text position-absolute text-white ">
-            <p class="bg-text-top text-center fw-bold">Performance Above
-                All</p>
-            <p class="bg-text-bottom text-center fw-bold">Aorus & AERO Laptop With 11th Gen Intel
-                Core H-series</p>
-            <a class="text-decoration-none text-white" href="">
-                <div class="bg-link text-center fw-bold">Xem Thêm</div>
-            </a>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            @php $i = 1; @endphp
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                @foreach($slider as $slider)
+                <div class="carousel-item {{ $i=='1' ? 'active' : '' }}" data-bs-interval="5000">
+                    @php $i++ @endphp
+                    <img class="PC" width="100%" src="{{ asset('storage/' . $slider->image_pc) }}"alt="">
+                    <img class="Mobile" width="100%" src="{{ asset('storage/' . $slider->image_mobile) }}"alt="">
+                    {{-- <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div> --}}
+                </div>
+                @endforeach
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
     <!-- End Banner -->

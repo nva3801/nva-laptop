@@ -4,7 +4,7 @@
         <div class="container-1650">
             <div class="breadcrumb px-4 py-3">
                 <div class="breadcrumb-top text-white"><span><span><a href="{{ '/' }}"
-                                class="text-decoration-none text-white">Trang Chủ</a> >> Cart</div>
+                                class="text-decoration-none text-white">Trang Chủ</a> >> Giỏ Hàng</div>
             </div>
             <div class="cart-show px-4 py-3">
                 <table class="table text-white">

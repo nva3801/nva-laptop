@@ -8,6 +8,7 @@ use App\Models\CategoryDetail;
 use App\Models\FAQ;
 use App\Models\News;
 use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class CategoryDetailController extends Controller
@@ -22,6 +23,7 @@ class CategoryDetailController extends Controller
         $faq = FAQ::where('status', 'Yes')->get();
         $news = News::where('like', 1)->where('status', 'Yes')->limit(1)->get();
         $news_like = News::where('like', 0)->where('status', 'Yes')->limit(2)->get();
+        $slider = Slider::where('status', 'Yes')->get();
         return view('user.category_detail', [
             'category' => $category,
             'category_detail_slug' => $category_detail_slug,
@@ -32,6 +34,7 @@ class CategoryDetailController extends Controller
             'footer' => $category,
             'news' => $news,
             'news_like' => $news_like,
+            'slider' => $slider,
         ]);
     }
 }
